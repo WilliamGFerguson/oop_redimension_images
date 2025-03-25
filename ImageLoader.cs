@@ -56,12 +56,10 @@ namespace OOP_Projet1
                 {
                     continue;
                 }
-                else
-                {
-                    Image image = extension == ".pbm" ? new PBMImage(file, width, height, pixels) : new PGMImage(file, width, height, pixels, maxGrayValue);
-                    ConsoleService.Success("Fichier valide");
-                    validImages.Add(image);
-                }
+
+                Image image = extension == ".pbm" ? new PBMImage(file, width, height, pixels) : new PGMImage(file, width, height, pixels, maxGrayValue);
+                ConsoleService.Success("Fichier valide");
+                validImages.Add(image);
             }
 
             return validImages;
@@ -114,22 +112,15 @@ namespace OOP_Projet1
             }
 
             int expectedPixelCount = width * height;
+
             if (pixels.Count != expectedPixelCount)
             {
                 ConsoleService.Error($"Nombre de pixels ne correspond pas aux dimensions.");
                 return false;
             }
 
-            bool pixelsValid = true;
-
-            if (extension == ".pbm")
-            {
-                pixelsValid = ValidatePBMPixels(pixels);
-            }
-            else if (extension == ".pgm")
-            {
-                pixelsValid = ValidatePGMPixels(pixels, maxGrayValue);
-            }
+            int grayValue = extension == ".pbm" ? 1 : maxGrayValue;
+            bool pixelsValid = ValidatePixels(pixels, extension, grayValue);
 
             if (!pixelsValid)
                 return false;
@@ -137,28 +128,30 @@ namespace OOP_Projet1
             return true;
         }
 
-        private bool ValidatePBMPixels(List<int> pixels)
+        private bool ValidatePixels(List<int> pixels, string extension, int maxGrayValue)
         {
-            foreach (int pixel in pixels)
+            switch (extension)
             {
-                if (pixel != 0 && pixel != 1)
-                {
-                    ConsoleService.Error("Pixel hors tons");
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private bool ValidatePGMPixels(List<int> pixels, int maxGrayValue)
-        {
-            foreach (int pixel in pixels)
-            {
-                if (pixel < 0 || maxGrayValue < pixel)
-                {
-                    ConsoleService.Error("Pixel hors tons");
-                    return false;
-                }
+                case ".pbm":
+                    foreach (int pixel in pixels)
+                    {
+                        if (pixel != 0 && pixel != 1)
+                        {
+                            ConsoleService.Error("Pixel hors tons");
+                            return false;
+                        }
+                    }
+                    break;
+                case ".pgm":
+                    foreach (int pixel in pixels)
+                    {
+                        if (pixel < 0 || maxGrayValue < pixel)
+                        {
+                            ConsoleService.Error("Pixel hors tons");
+                            return false;
+                        }
+                    }
+                    break;
             }
             return true;
         }

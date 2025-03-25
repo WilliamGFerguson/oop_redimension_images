@@ -52,7 +52,6 @@ namespace OOP_Projet1
                         else
                             doublePixels.Add(0);
                     }
-                    // Si la position est diagonale (au centre de 4 pixels)
                     else
                     {
                         doublePixels.Add(0);
