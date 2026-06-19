@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Projet1
+﻿namespace OOP_Projet1.Models
 {
     /// <summary>
     /// Classe pour les images PBM, hérite de la classe Image
@@ -16,8 +10,8 @@ namespace OOP_Projet1
 
         public override void DoubleSize()
         {
-            int newHeight = (Height * 2) - 1;
-            int newWidth = (Width * 2) - 1;
+            int newHeight = Height * 2 - 1;
+            int newWidth = Width * 2 - 1;
             List<int> doublePixels = new List<int>();
 
             for (int y = 0; y < newHeight; y++)
@@ -27,13 +21,13 @@ namespace OOP_Projet1
                     // Si la position (x, y) est une position originale (pair), on copie le pixel
                     if (x % 2 == 0 && y % 2 == 0)
                     {
-                        int originalIndex = (y / 2) * Width + (x / 2);
+                        int originalIndex = y / 2 * Width + x / 2;
                         doublePixels.Add(Pixels[originalIndex]);
                     }
                     // Si la position est entre 2 pixels horizontaux
                     else if (x % 2 == 1 && y % 2 == 0)
                     {
-                        int leftIndex = (y / 2) * Width + (x / 2);
+                        int leftIndex = y / 2 * Width + x / 2;
                         int rightIndex = leftIndex + 1;
 
                         if (rightIndex < Width * Height && Pixels[leftIndex] == 1 && Pixels[rightIndex] == 1)
@@ -44,7 +38,7 @@ namespace OOP_Projet1
                     // Si la position est entre 2 pixels verticaux
                     else if (x % 2 == 0 && y % 2 == 1)
                     {
-                        int topIndex = (y / 2) * Width + (x / 2);
+                        int topIndex = y / 2 * Width + x / 2;
                         int bottomIndex = topIndex + Width;
 
                         if (bottomIndex < Pixels.Count && Pixels[topIndex] == 1 && Pixels[bottomIndex] == 1)

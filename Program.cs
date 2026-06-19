@@ -1,10 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿using OOP_Projet1.Models;
+using OOP_Projet1.Services;
 
 namespace OOP_Projet1
 {

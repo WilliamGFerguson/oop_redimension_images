@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Projet1
+﻿namespace OOP_Projet1.Interfaces
 {
     /// <summary>
     /// Interface pour définir les méthodes

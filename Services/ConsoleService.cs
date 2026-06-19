@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Projet1
+﻿namespace OOP_Projet1.Services
 {
     /// <summary>
     /// Classe pour afficher des messages d'erreur ou de succès

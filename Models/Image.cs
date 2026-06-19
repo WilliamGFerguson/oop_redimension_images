@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOP_Projet1.Interfaces;
+using OOP_Projet1.Services;
 
-namespace OOP_Projet1
+namespace OOP_Projet1.Models
 {
     /// <summary>
     /// Classe abstraite représentant tous les images supportés

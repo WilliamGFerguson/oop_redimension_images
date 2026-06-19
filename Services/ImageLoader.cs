@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOP_Projet1.Models;
 
-namespace OOP_Projet1
+namespace OOP_Projet1.Services
 {
     /// <summary>
     /// Classe interne pour trier les fichiers valides dans le dossier
@@ -34,7 +30,7 @@ namespace OOP_Projet1
 
                 List<string> lines = File.ReadAllLines(file).ToList();
 
-                if ((extension == ".pbm" && lines.Count < 3) || (extension == ".pgm" && lines.Count < 4))
+                if (extension == ".pbm" && lines.Count < 3 || extension == ".pgm" && lines.Count < 4)
                 {
                     ConsoleService.Error("Nombre de lignes invalide");
                     continue;
